@@ -1,0 +1,669 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_isalpha.o",
+      "sources/ft_isalpha.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_isalpha.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_isalpha.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_isdigit.o",
+      "sources/ft_isdigit.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_isdigit.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_isdigit.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_isalnum.o",
+      "sources/ft_isalnum.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_isalnum.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_isalnum.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_isascii.o",
+      "sources/ft_isascii.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_isascii.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_isascii.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_isprint.o",
+      "sources/ft_isprint.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_isprint.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_isprint.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strlen.o",
+      "sources/ft_strlen.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strlen.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strlen.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_memset.o",
+      "sources/ft_memset.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_memset.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_memset.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_bzero.o",
+      "sources/ft_bzero.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_bzero.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_bzero.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_memcpy.o",
+      "sources/ft_memcpy.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_memcpy.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_memcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_memmove.o",
+      "sources/ft_memmove.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_memmove.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_memmove.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strlcpy.o",
+      "sources/ft_strlcpy.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strlcpy.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strlcpy.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strlcat.o",
+      "sources/ft_strlcat.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strlcat.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strlcat.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_toupper.o",
+      "sources/ft_toupper.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_toupper.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_toupper.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_tolower.o",
+      "sources/ft_tolower.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_tolower.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_tolower.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strchr.o",
+      "sources/ft_strchr.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strchr.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strrchr.o",
+      "sources/ft_strrchr.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strrchr.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strrchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strncmp.o",
+      "sources/ft_strncmp.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strncmp.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strncmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_memchr.o",
+      "sources/ft_memchr.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_memchr.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_memchr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_memcmp.o",
+      "sources/ft_memcmp.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_memcmp.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_memcmp.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strnstr.o",
+      "sources/ft_strnstr.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strnstr.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strnstr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_atoi.o",
+      "sources/ft_atoi.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_atoi.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_atoi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_calloc.o",
+      "sources/ft_calloc.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_calloc.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_calloc.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strdup.o",
+      "sources/ft_strdup.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strdup.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strdup.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_substr.o",
+      "sources/ft_substr.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_substr.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_substr.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strjoin.o",
+      "sources/ft_strjoin.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strjoin.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strjoin.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strtrim.o",
+      "sources/ft_strtrim.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strtrim.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strtrim.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_split.o",
+      "sources/ft_split.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_split.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_split.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_itoa.o",
+      "sources/ft_itoa.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_itoa.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_itoa.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_strmapi.o",
+      "sources/ft_strmapi.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_strmapi.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_strmapi.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_striteri.o",
+      "sources/ft_striteri.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_striteri.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_striteri.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_putchar_fd.o",
+      "sources/ft_putchar_fd.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_putchar_fd.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_putchar_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_putstr_fd.o",
+      "sources/ft_putstr_fd.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_putstr_fd.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_putstr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_putendl_fd.o",
+      "sources/ft_putendl_fd.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_putendl_fd.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_putendl_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/ft_putnbr_fd.o",
+      "sources/ft_putnbr_fd.c"
+    ],
+    "directory": "/Users/riceset/fract-ol/libft",
+    "file": "/Users/riceset/fract-ol/libft/sources/ft_putnbr_fd.c",
+    "output": "/Users/riceset/fract-ol/libft/sources/ft_putnbr_fd.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-Wall",
+      "-Werror",
+      "-Wextra",
+      "-I",
+      "includes",
+      "-I",
+      "libft/includes",
+      "-c",
+      "-I",
+      "/usr/local/include",
+      "-o",
+      "sources/main.o",
+      "sources/main.c"
+    ],
+    "directory": "/Users/riceset/fract-ol",
+    "file": "/Users/riceset/fract-ol/sources/main.c",
+    "output": "/Users/riceset/fract-ol/sources/main.o"
+  }
+]

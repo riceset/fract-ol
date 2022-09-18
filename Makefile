@@ -1,43 +1,49 @@
-NAME			= fractol
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
+#    Updated: 2022/09/18 12:15:04 by tkomeno          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CFLAGS			= -Wall -Werror -Wextra
+NAME		=	fractol
 
-RM				= rm -rf
-			
-PATH_INCLUDES	= ./includes/
-PATH_OBJS		= ./objects/
-PATH_SRCS		= ./sources/
-PATH_LIBFT		= ./Libft
+INCLUDES	=	-I includes -I libft/includes
 
-MINILIBX_PATH	=	./minilibx-linux/
-MINILIBX		=	$(MINILIBX_PATH)libmlx.a
+CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
 
-SRCS			= $(addprefix $(PATH_SRCS), main.c print_pixels.c)
-LFLAGS			= -L $(PATH_LIBFT) -lft
-OBJS 			= $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
-INCLUDES		= -I $(PATH_INCLUDES)
-MLXFLAGS		= -L. -lXext -L. -lX11
+LFLAGS		=	-L./libft -lft
 
-all:	$(NAME)
+MLXFLAGS	=	-lmlx
 
-$(NAME): $(OBJS)
-	make -C $(PATH_LIBFT)
-	make -C $(MINILIBX_PATH)
-	cc $(CFLAGS) $(INCLUDES) $(OBJS) $(LFLAGS) $(MINILIBX) $(MLXFLAGS) -o $(NAME)
+LIBFT		=	libft.a
 
+FILES 		=	main.c
 
-$(PATH_OBJS)%.o: $(PATH_SRCS)%.c
-	mkdir -p $(PATH_OBJS)
-	cc $(CFLAGS) $(INCLUDES) -I mlx.h -O3 -c $< -o $@
+SRCS		=	$(addprefix sources/,$(FILES))
+
+OBJS		=	$(SRCS:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(OBJS) $(LFLAGS) $(MLXFLAGS) -o $(NAME)
 
 clean:
-		$(RM) $(PATH_OBJS)
-		make clean -C $(PATH_LIBFT)
+	$(RM) $(OBJS)
+	$(MAKE) clean -C ./libft
 
-fclean:	clean
-		$(RM) $(NAME)
-		make fclean -C $(PATH_LIBFT)
+fclean:
+	$(RM) $(OBJS) $(NAME)
+	$(MAKE) fclean -C ./libft
 
-re:		fclean all
+re: fclean all
+
+$(LIBFT):
+	$(MAKE) -C ./libft
 
 .PHONY: all clean fclean re
