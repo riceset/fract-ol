@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/19 15:30:36 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/19 18:46:21 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
 
 LIBS_PATH	=	-L$(LIBFT_PATH) -L$(MLX_PATH)
 
-LIBS		=	-lft -lmlx
+LIBS		=	-lft -lmlx42
 
 LIBFT		=	libft.a
 MLX			=	libmlx42.dylib
@@ -32,11 +32,13 @@ SRCS		=	$(addprefix sources/,$(FILES))
 
 OBJS		=	$(SRCS:.c=.o)
 
+CP			=	@cp -r
+
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	mv $(MLX_PATH)/$(MLX) .
-	$(CC) $(OBJS) $(MLX) -o $(NAME) -L$(LIBFT_PATH)
+	$(CP) $(MLX_PATH)/$(MLX) .
+	$(CC) $(OBJS) -o $(NAME) $(LIBS_PATH) $(LIBS)
 
 clean:
 	$(RM) $(OBJS) $(MLX)

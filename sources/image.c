@@ -6,14 +6,14 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:02:49 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/19 11:28:03 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/19 17:56:31 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 #define WIDTH 1200
-#define HEIGHT 3000
+#define HEIGHT 800
 
 typedef struct s_data
 {
