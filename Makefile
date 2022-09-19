@@ -6,23 +6,27 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/18 12:15:04 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/19 15:30:36 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	fractol
 
-INCLUDES	=	-I includes -I libft/includes
+LIBFT_PATH	=	./libraries/libft
+MLX_PATH	=	./libraries/mlx
+
+INCLUDES	=	-I includes -I $(LIBFT_PATH)/includes
 
 CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
 
-LFLAGS		=	-L./libft -lft
+LIBS_PATH	=	-L$(LIBFT_PATH) -L$(MLX_PATH)
 
-MLXFLAGS	=	-lmlx
+LIBS		=	-lft -lmlx
 
 LIBFT		=	libft.a
+MLX			=	libmlx42.dylib
 
-FILES 		=	main.c
+FILES 		=	image.c
 
 SRCS		=	$(addprefix sources/,$(FILES))
 
@@ -30,20 +34,26 @@ OBJS		=	$(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(OBJS) $(LFLAGS) $(MLXFLAGS) -o $(NAME)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
+	mv $(MLX_PATH)/$(MLX) .
+	$(CC) $(OBJS) $(MLX) -o $(NAME) -L$(LIBFT_PATH)
 
 clean:
-	$(RM) $(OBJS)
-	$(MAKE) clean -C ./libft
+	$(RM) $(OBJS) $(MLX)
+	$(MAKE) clean -C $(LIBFT_PATH)
+	$(MAKE) clean -C $(MLX_PATH)
 
 fclean:
-	$(RM) $(OBJS) $(NAME)
-	$(MAKE) fclean -C ./libft
+	$(RM) $(OBJS) $(NAME) $(MLX)
+	$(MAKE) fclean -C $(LIBFT_PATH)
+	$(MAKE) fclean -C $(MLX_PATH)
 
 re: fclean all
 
 $(LIBFT):
-	$(MAKE) -C ./libft
+	$(MAKE) -C $(LIBFT_PATH)
+
+$(MLX):
+	$(MAKE) -C $(MLX_PATH)
 
 .PHONY: all clean fclean re
