@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/19 18:46:21 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/21 12:11:51 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,9 @@ CP			=	@cp -r
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_PATH)
+	$(MAKE) -C $(MLX_PATH)
 	$(CP) $(MLX_PATH)/$(MLX) .
 	$(CC) $(OBJS) -o $(NAME) $(LIBS_PATH) $(LIBS)
 
@@ -51,11 +53,5 @@ fclean:
 	$(MAKE) fclean -C $(MLX_PATH)
 
 re: fclean all
-
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_PATH)
-
-$(MLX):
-	$(MAKE) -C $(MLX_PATH)
 
 .PHONY: all clean fclean re
