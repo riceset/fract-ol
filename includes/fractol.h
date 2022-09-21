@@ -6,15 +6,15 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/09/19 11:24:05 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/21 15:41:34 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft.h"
-# include <mlx.h>
+# include "../libraries/libft/includes/libft.h"
+# include "../libraries/mlx/mlx.h"
 
 // typedef struct s_data
 // {

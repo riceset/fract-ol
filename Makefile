@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/21 12:11:51 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/21 12:21:57 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ LIBS_PATH	=	-L$(LIBFT_PATH) -L$(MLX_PATH)
 
 LIBS		=	-lft -lmlx42
 
-LIBFT		=	libft.a
 MLX			=	libmlx42.dylib
 
 FILES 		=	image.c
