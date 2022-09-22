@@ -6,11 +6,13 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:02:49 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/21 16:19:43 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/22 14:39:38 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+#define MLX_ERROR 1
 
 #define WIDTH 800
 #define HEIGHT 800
@@ -31,8 +33,15 @@ int	main(void)
 	t_img 	mlx_img;
 
 	mlx = mlx_init();
+	if (!mlx)
+		return (MLX_ERROR);
 
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "fractol");
+	if (!mlx_win)
+	{
+		free(mlx_win);
+		return (MLX_ERROR);
+	}
 
 	mlx_img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
 
@@ -40,5 +49,7 @@ int	main(void)
 
 	mlx_loop(mlx);
 
-	return (0);
+	mlx_destroy_window(mlx, mlx_win);
+	
+	free(mlx);
 }
