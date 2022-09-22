@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:02:49 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/22 14:39:38 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/22 14:45:45 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 
 #define WIDTH 800
 #define HEIGHT 800
+
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+}	t_data;
 
 typedef struct s_img
 {
@@ -28,28 +34,27 @@ typedef struct s_img
 
 int	main(void)
 {
-	void	*mlx;
-	void 	*mlx_win;
+	t_data  d;
 	t_img 	mlx_img;
 
-	mlx = mlx_init();
-	if (!mlx)
+	d.mlx = mlx_init();
+	if (!d.mlx)
 		return (MLX_ERROR);
 
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGHT, "fractol");
-	if (!mlx_win)
+	d.win = mlx_new_window(d.mlx, WIDTH, HEIGHT, "fractol");
+	if (!d.win)
 	{
-		free(mlx_win);
+		free(d.win);
 		return (MLX_ERROR);
 	}
 
-	mlx_img.img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	mlx_img.img = mlx_new_image(d.mlx, WIDTH, HEIGHT);
 
 	mlx_img.addr = mlx_get_data_addr(mlx_img.img, &mlx_img.bpp, &mlx_img.line_len, &mlx_img.endian);
 
-	mlx_loop(mlx);
+	mlx_loop(d.mlx);
 
-	mlx_destroy_window(mlx, mlx_win);
+	mlx_destroy_window(d.mlx, d.win);
 	
-	free(mlx);
+	free(d.mlx);
 }
