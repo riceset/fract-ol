@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/24 18:16:39 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/28 03:46:43 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,5 +52,9 @@ fclean:
 	$(MAKE) fclean -C $(MLX_PATH)
 
 re: fclean all
+
+cmpl:
+	make
+	./$(NAME)
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/28 00:48:39 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 03:53:03 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ int main(void)
 
 	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "fract'ol");
 
-	mlx_pixel_put(f.mlx, f.win, 100, 100, 0x000000FF);
+	printf("max_im: %lf\n", f.max_im);
+
+	for (int y = 0; y < HEIGHT; y++)
+	{
+		for (int x = 0; x < WIDTH; x++)
+		{
+			if ((x > WIDTH / 2 - 50 && x < WIDTH / 2 + 50)
+					&& (y > HEIGHT / 2 - 50 && y < HEIGHT / 2 + 50))
+				mlx_pixel_put(f.mlx, f.win, x, y, 0x00FFFF00);
+			else
+				mlx_pixel_put(f.mlx, f.win, x, y, 0x0000FF00);
+		}
+	}
 
 	mlx_loop(f.mlx);
 
