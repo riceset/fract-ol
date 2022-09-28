@@ -6,11 +6,19 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/28 07:13:48 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 08:58:10 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+enum e_mlx_status
+{
+	MLX_SUCCESS,
+	MLX_ERROR
+};
+
+typedef enum e_mlx_status	t_mlx_status;
 
 void draw_square(t_fractal f)
 {
@@ -56,24 +64,35 @@ void set_complex_plane_coordinates(t_fractal f)
 	f.max_im = (f.max_re - f.min_re) * HEIGHT / WIDTH + f.min_im;
 }
 
-void init_fractal(t_fractal *f)
+bool could_initialize_fractal(t_fractal *f)
 {
 	f->mlx = mlx_init();
+	if (!f->mlx)
+		return (false);
 
 	set_complex_plane_coordinates(*f);
 
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fract'ol");
+	if (!f->win)
+	{
+		free(f->win);
+		return (false);
+	}
+
+	return (true);
 }
 
 int main(void)
 {
 	t_fractal f;
 
-	init_fractal(&f);
+	if (could_initialize_fractal(&f))
+	{
+		draw_square(f);
+		mlx_loop(f.mlx);
 
-	draw_square(f);
+		return (0);
+	}
 
-	mlx_loop(f.mlx);
-
-	return (0);
+	return (1);
 }

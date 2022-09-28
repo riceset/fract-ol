@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/09/28 07:13:31 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 08:00:26 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include "../libraries/libft/includes/libft.h"
 # include "../libraries/mlx/mlx.h"
 # include <stdbool.h>
+# include <math.h>
 # include <stdio.h>
+
+# define PI (atan(1) * 4)
 
 #define WIDTH 900
 #define HEIGHT 900
