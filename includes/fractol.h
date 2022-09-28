@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/09/28 03:20:43 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 07:13:31 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@
 # include <stdbool.h>
 # include <stdio.h>
 
-// typedef struct s_data
-// {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }			t_data;
+#define WIDTH 900
+#define HEIGHT 900
 
-// typedef struct s_vars
-// {
-// 	void	*mlx;
-// 	void	*win;
-// }			t_vars;
+struct s_fractal
+{
+	void *mlx;
+	void *win;
 
-// void		print_pixels(void *mlx, t_data *img);
+	double max_re;
+	double min_re;
+
+	double max_im;
+	double min_im;
+};
+
+typedef struct s_fractal t_fractal;
 
 #endif

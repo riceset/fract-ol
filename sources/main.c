@@ -6,28 +6,11 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/28 06:57:52 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 07:13:48 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-#define WIDTH 900
-#define HEIGHT 900
-
-struct s_fractal
-{
-	void *mlx;
-	void *win;
-
-	double max_re;
-	double min_re;
-
-	double max_im;
-	double min_im;
-};
-
-typedef struct s_fractal t_fractal;
 
 void draw_square(t_fractal f)
 {
@@ -54,10 +37,7 @@ void draw_triangle(t_fractal f)
 					&& (y > HEIGHT / 2 - 50 && y < HEIGHT / 2 + 50))
 			{
 				if (x + y >= 900)
-				{
 					mlx_pixel_put(f.mlx, f.win, x, y, 0x00FFFF00);
-					//printf("x: %d, y: %d\t", x, y);
-				}
 				else
 					mlx_pixel_put(f.mlx, f.win, x, y, 0x0000FF00);
 			}
@@ -67,21 +47,31 @@ void draw_triangle(t_fractal f)
 	}
 }
 
-int main(void)
+void set_complex_plane_coordinates(t_fractal f)
 {
-	t_fractal f;
-
-	f.mlx = mlx_init();
-
 	f.min_re = -2.0;
 	f.max_re = +1.0;
 
 	f.min_im = -1.5;
 	f.max_im = (f.max_re - f.min_re) * HEIGHT / WIDTH + f.min_im;
+}
 
-	f.win = mlx_new_window(f.mlx, WIDTH, HEIGHT, "fract'ol");
+void init_fractal(t_fractal *f)
+{
+	f->mlx = mlx_init();
 
-	draw_triangle(f);
+	set_complex_plane_coordinates(*f);
+
+	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fract'ol");
+}
+
+int main(void)
+{
+	t_fractal f;
+
+	init_fractal(&f);
+
+	draw_square(f);
 
 	mlx_loop(f.mlx);
 
