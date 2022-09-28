@@ -6,19 +6,11 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/28 08:58:10 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/28 09:07:56 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-enum e_mlx_status
-{
-	MLX_SUCCESS,
-	MLX_ERROR
-};
-
-typedef enum e_mlx_status	t_mlx_status;
 
 void draw_square(t_fractal f)
 {
@@ -91,8 +83,8 @@ int main(void)
 		draw_square(f);
 		mlx_loop(f.mlx);
 
-		return (0);
+		return (SUCCESS);
 	}
 
-	return (1);
+	return (ERROR);
 }
