@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/21 12:21:57 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/09/24 18:16:39 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBS		=	-lft -lmlx42
 
 MLX			=	libmlx42.dylib
 
-FILES 		=	image.c
+FILES 		=	main.c
 
 SRCS		=	$(addprefix sources/,$(FILES))
 
