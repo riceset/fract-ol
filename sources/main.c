@@ -6,11 +6,43 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/09/28 09:07:56 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/30 23:51:37 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+float to_radians(float theta)
+{
+	return (theta * PI / 180);
+}
+
+void draw_circle(t_fractal f)
+{
+	int color;
+	int radius;
+	double x;
+	double y;
+	double x1;
+	double y1;
+
+	x = WIDTH / 2;
+	y = HEIGHT / 2;
+
+	radius = 300;
+	color = 0x0000FF00;
+
+	for (float theta = 0; theta < 360; theta += 0.01)
+	{
+		x1 = radius * cos(to_radians(theta));
+		y1 = radius * sin(to_radians(theta));
+
+		if (theta >= 180)
+			color = 0x00FF0000;
+
+		mlx_pixel_put(f.mlx, f.win, x + x1, y + y1, color);
+	}
+}
 
 void draw_square(t_fractal f)
 {
@@ -80,7 +112,7 @@ int main(void)
 
 	if (could_initialize_fractal(&f))
 	{
-		draw_square(f);
+		draw_circle(f);
 		mlx_loop(f.mlx);
 
 		return (SUCCESS);

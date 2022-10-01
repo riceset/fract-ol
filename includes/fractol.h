@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/09/28 09:07:55 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/09/30 23:18:40 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ enum e_status
 	ERROR
 };
 
-#define WIDTH 900
-#define HEIGHT 900
+#define WIDTH 900.00
+#define HEIGHT 900.00
 
 struct s_fractal
 {
