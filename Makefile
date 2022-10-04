@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/28 03:46:43 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/10/04 14:08:13 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ MLX_PATH	=	./libraries/mlx
 
 INCLUDES	=	-I includes -I $(LIBFT_PATH)/includes
 
-CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
+CFLAGS		=	$(INCLUDES)
+# CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
 
 LIBS_PATH	=	-L$(LIBFT_PATH) -L$(MLX_PATH)
 

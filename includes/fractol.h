@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/01 12:04:26 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/04 13:59:57 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,18 @@ struct s_mlx
 
 typedef struct s_mlx t_mlx;
 
+struct s_complex
+{
+	double re;
+	double im;
+};
+
+typedef struct s_complex t_complex;
+
 struct s_fractal
 {
-	double max_re;
-	double min_re;
-
-	double max_im;
-	double min_im;
+	t_complex max;
+	t_complex min;
 };
 
 typedef struct s_fractal t_fractal;
