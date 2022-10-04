@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/09/30 23:18:40 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/01 12:04:26 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,19 @@
 
 # define PI (atan(1) * 4)
 
-enum e_status
-{
-	SUCCESS,
-	ERROR
-};
-
 #define WIDTH 900.00
 #define HEIGHT 900.00
 
-struct s_fractal
+struct s_mlx
 {
 	void *mlx;
 	void *win;
+};
 
+typedef struct s_mlx t_mlx;
+
+struct s_fractal
+{
 	double max_re;
 	double min_re;
 
