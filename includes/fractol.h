@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/04 13:59:57 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:45:37 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ struct s_fractal
 {
 	t_complex max;
 	t_complex min;
+	t_complex k;
 };
 
 typedef struct s_fractal t_fractal;

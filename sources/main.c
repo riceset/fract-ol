@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/04 14:16:59 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:53:19 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void set_complex_plane_coordinates(t_fractal *f)
 {
 	f->min.re = -2.0;
 	f->max.re = +1.0;
+	f->k.re = -0.766667;
 
 	f->min.im = -1.5;
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
+	f->k.im = -0.090000;
 }
 
 bool initialized_mlx(t_mlx *m)
@@ -49,14 +51,38 @@ double square(double x)
 	return (x * x);
 }
 
+void julia(t_fractal *f, t_mlx *m, int x, int y, t_complex z)
+{
+	double tmp;
+	bool is_in_set;
+
+	is_in_set = true;
+
+	for (int i = 0; i < 100; i++)
+	{
+		if (square(z.re) + square(z.im) > 4.0)
+		{
+			is_in_set = false;
+			break ;
+		}
+
+		tmp = 2 * z.re * z.im + f->k.im;
+		z.re = square(z.re) - square(z.im) + f->k.re;
+		z.im = tmp;
+	}
+
+	if (is_in_set)
+		mlx_pixel_put(m->mlx, m->win, x, y, 0x00000000);
+	else
+		mlx_pixel_put(m->mlx, m->win, x, y, 0x00FFFFFF);
+}
+
+
 void mandelbrot(t_fractal *f, t_mlx *m, int x, int y, t_complex c)
 {
 	t_complex z;
 	double tmp;
 	bool is_in_set;
-
-	z.re = 0;
-	z.im = 0;
 
 	is_in_set = true;
 
@@ -89,7 +115,7 @@ void draw_fractal(t_fractal *f, t_mlx *m)
 			pixel.re = f->min.re + (double)x * (f->max.re - f->min.re) / WIDTH;
 			pixel.im = f->min.im + (double)y * (f->max.im - f->min.im) / HEIGHT;
 
-			mandelbrot(f, m, x, y, pixel);
+			julia(f, m, x, y, pixel);
 		}
 }
 
