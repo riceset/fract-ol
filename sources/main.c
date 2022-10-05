@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/05 15:55:51 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/05 16:33:13 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ void mandelbrot(t_fractal *f, t_mlx *m, int x, int y, t_complex c)
 	double tmp;
 	bool is_in_set;
 
+	z.re = 0.0;
+	z.im = 0.0;
+
 	is_in_set = true;
 
 	for (int i = 0; i < 100; i++)
@@ -115,7 +118,7 @@ void draw_fractal(t_fractal *f, t_mlx *m)
 			pixel.re = f->min.re + x * (f->max.re - f->min.re) / WIDTH;
 			pixel.im = f->min.im + y * (f->max.im - f->min.im) / HEIGHT;
 
-			julia(f, m, x, y, pixel);
+			mandelbrot(f, m, x, y, pixel);
 		}
 }
 
