@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/05 15:53:19 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:55:51 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,11 @@ void draw_fractal(t_fractal *f, t_mlx *m)
 {
 	t_complex pixel;
 
-	for (int y = 0; y < HEIGHT; y++)
-		for (int x = 0; x < WIDTH; x++)
+	for (double y = 0; y < HEIGHT; y++)
+		for (double x = 0; x < WIDTH; x++)
 		{
-			pixel.re = f->min.re + (double)x * (f->max.re - f->min.re) / WIDTH;
-			pixel.im = f->min.im + (double)y * (f->max.im - f->min.im) / HEIGHT;
+			pixel.re = f->min.re + x * (f->max.re - f->min.re) / WIDTH;
+			pixel.im = f->min.im + y * (f->max.im - f->min.im) / HEIGHT;
 
 			julia(f, m, x, y, pixel);
 		}
