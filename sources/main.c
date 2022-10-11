@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/05 16:33:13 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/10 21:49:42 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ bool initialized_mlx(t_mlx *m)
 		free(m->win);
 		return (false);
 	}
+
+	m->img = mlx_new_image(m->mlx, WIDTH, HEIGHT);
+	if (!m->img)
+	{
+		free(m->img);
+		return (false);
+	}
+
+	m->addr = mlx_get_data_addr(m->img, &m->bits_per_pixel, &m->line_length, &m->endian);
 
 	return (true);
 }
@@ -108,28 +117,36 @@ void mandelbrot(t_fractal *f, t_mlx *m, int x, int y, t_complex c)
 		mlx_pixel_put(m->mlx, m->win, x, y, 0x00FFFFFF);
 }
 
-void draw_fractal(t_fractal *f, t_mlx *m)
+void draw_fractal(t_mlx *m)
 {
 	t_complex pixel;
 
 	for (double y = 0; y < HEIGHT; y++)
 		for (double x = 0; x < WIDTH; x++)
 		{
-			pixel.re = f->min.re + x * (f->max.re - f->min.re) / WIDTH;
-			pixel.im = f->min.im + y * (f->max.im - f->min.im) / HEIGHT;
+			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
+			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
 
-			mandelbrot(f, m, x, y, pixel);
+			mandelbrot(&m->f, m, x, y, pixel);
 		}
+}
+
+int draw_and_put_image(t_mlx *m)
+{
+	draw_fractal(m);
+	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
+
+	return (0);
 }
 
 int main(void)
 {
-	t_fractal f;
 	t_mlx m;
 
-	if (initialized_mlx(&m) && initialized_fractal(&f))
+	if (initialized_mlx(&m) && initialized_fractal(&m.f))
 	{
-		draw_fractal(&f, &m);
+		mlx_loop_hook(m.mlx, &draw_and_put_image, &m);
+		mlx_hook(m.win, KeyPress, KeyPressMask, &change_color, &m);
 		mlx_loop(m.mlx);
 		return (0);
 	}

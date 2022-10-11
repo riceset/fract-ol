@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/05 15:45:37 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/10 21:37:01 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@
 #define WIDTH 900.00
 #define HEIGHT 900.00
 
-struct s_mlx
-{
-	void *mlx;
-	void *win;
-};
-
-typedef struct s_mlx t_mlx;
-
 struct s_complex
 {
 	double re;
@@ -48,5 +40,20 @@ struct s_fractal
 };
 
 typedef struct s_fractal t_fractal;
+
+
+struct s_mlx
+{
+	void *mlx;
+	void *win;
+	void *img;
+	char *addr;
+	int bits_per_pixel;
+	int line_length;
+	int endian;
+	t_fractal f;
+};
+
+typedef struct s_mlx t_mlx;
 
 #endif
