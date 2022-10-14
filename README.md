@@ -15,5 +15,3 @@ First, clone this repository and `cd` into it:
 ```zsh
 $ git clone https://github.com/riceset/fract-ol; cd fract-ol
 ```
-
-test
