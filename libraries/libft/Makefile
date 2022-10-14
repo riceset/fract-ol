@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/29 02:25:48 by tkomeno           #+#    #+#              #
-#    Updated: 2022/09/17 16:31:07 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/10/14 19:11:28 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ BSRCS = $(addprefix sources/bonus/,$(BONUS))
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 
-CC = gcc
+CC = clang
 AR = ar -rc
 
 CFLAGS = -Wall -Wextra -Werror -I includes

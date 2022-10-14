@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/10 21:49:42 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/14 19:10:59 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ int main(void)
 	if (initialized_mlx(&m) && initialized_fractal(&m.f))
 	{
 		mlx_loop_hook(m.mlx, &draw_and_put_image, &m);
-		mlx_hook(m.win, KeyPress, KeyPressMask, &change_color, &m);
 		mlx_loop(m.mlx);
 		return (0);
 	}
