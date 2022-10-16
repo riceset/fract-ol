@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 03:15:15 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 04:53:07 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@
 # define SUCCESS 0
 # define ERROR 1
 
+enum e_fractal_name
+{
+	MANDELBROT,
+	JULIA
+};
+
+typedef enum e_fractal_name t_fractal_name;
+
 struct s_complex
 {
 	double re;
@@ -41,13 +49,13 @@ typedef struct s_complex t_complex;
 
 struct s_fractal
 {
+	t_fractal_name	name;
 	t_complex max;
 	t_complex min;
 	t_complex k;
 };
 
 typedef struct s_fractal t_fractal;
-
 
 struct s_mlx
 {

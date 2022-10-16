@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 03:39:54 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:06:57 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	pixel_put(t_mlx *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+bool print_error(char *message)
+{
+	ft_printf(RED "Error" CRESET ": %s\n", message);
+	return (false);
+}
+
 void set_complex_plane_coordinates(t_fractal *f)
 {
 	f->min.re = -2.0;
@@ -31,24 +37,24 @@ void set_complex_plane_coordinates(t_fractal *f)
 	f->k.im = -0.090000;
 }
 
-bool initialized_mlx(t_mlx *m)
+bool init_mlx(t_mlx *m)
 {
 	m->mlx = mlx_init();
 	if (!m->mlx)
-		return (false);
+		return (print_error("Failed to initialize mlx."));
 
 	m->win = mlx_new_window(m->mlx, WIDTH, HEIGHT, "fract'ol");
 	if (!m->win)
 	{
 		free(m->win);
-		return (false);
+		return (print_error("Failed to create a window."));
 	}
 
 	m->img = mlx_new_image(m->mlx, WIDTH, HEIGHT);
 	if (!m->img)
 	{
 		free(m->img);
-		return (false);
+		return (print_error("Failed to create an image."));
 	}
 
 	m->addr = mlx_get_data_addr(m->img, &m->bits_per_pixel, &m->line_length, &m->endian);
@@ -56,8 +62,33 @@ bool initialized_mlx(t_mlx *m)
 	return (true);
 }
 
-bool initialized_fractal(t_fractal *f)
+bool is_mandelbrot(char *name)
 {
+	if (ft_strcmp(name, "Mandelbrot") == 0
+		|| ft_strcmp(name, "mandelbrot") == 0)
+		return (true);
+	return (false);
+}
+
+bool is_julia(char *name)
+{
+	if (ft_strcmp(name, "Julia") == 0
+		|| ft_strcmp(name, "julia") == 0)
+		return (true);
+	return (false);
+}
+
+void determine_fractal(char *name, t_fractal *f)
+{
+	if (is_mandelbrot(name))
+		f->name = MANDELBROT;
+	else if (is_julia(name))
+		f->name = JULIA;
+}
+
+bool init_fractal(char *name, t_fractal *f)
+{
+	determine_fractal(name, f);
 	set_complex_plane_coordinates(f);
 
 	return (true);
@@ -135,7 +166,7 @@ void draw_fractal(t_mlx *m)
 			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
 			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
 
-			julia(&m->f, m, x, y, pixel);
+			mandelbrot(&m->f, m, x, y, pixel);
 		}
 }
 
@@ -257,12 +288,6 @@ int	exit_hook(t_mlx *m)
 	return (0);
 }
 
-bool print_error(char *message)
-{
-	ft_printf(RED "Error" CRESET ": %s\n", message);
-	return (false);
-}
-
 bool check_args(int argc, char **argv)
 {
 	if (argc == 1)
@@ -271,15 +296,11 @@ bool check_args(int argc, char **argv)
 	else if (argc > 4)
 		return (print_error("Too many arguments."));
 
-	else if (ft_strcmp(argv[1], "Julia") != 0
-		&& ft_strcmp(argv[1], "julia") != 0
-		&& ft_strcmp(argv[1], "Mandelbrot") != 0
-		&& ft_strcmp(argv[1], "mandelbrot") != 0)
+	else if (!(is_mandelbrot(argv[1]) || is_julia(argv[1])))
 		return (print_error("Invalid set.\n" GRN "Available sets" CRESET ": [" \
 				YEL "Mandelbrot" CRESET ", " MAG "Julia" CRESET "]"));
 
-	else if ((ft_strcmp(argv[1], "Julia") == 0 || ft_strcmp(argv[1], "julia") == 0)
-		&& (argv[2] == NULL || argv[3] == NULL))
+	else if (is_julia(argv[1]) && (argv[2] == NULL || argv[3] == NULL))
 		return (print_error("Invalid constant (K) value.\n" \
 				GRN "Input for K values" CRESET ": [" YEL "K's REAL PART" \
 				CRESET ", " MAG "K's IMAGINARY PART" CRESET "]"));
@@ -291,8 +312,9 @@ int main(int argc, char **argv)
 {
 	t_mlx m;
 
-	if (check_args(argc, argv) && initialized_mlx(&m) && initialized_fractal(&m.f))
+	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv[1], &m.f))
 	{
+		// ft_printf("%s\n", m.f.name ? "JULIA" : "MANDELBROT");
 		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
 
 		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
