@@ -6,11 +6,19 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/14 19:10:59 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 01:09:14 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void	pixel_put(t_mlx *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 void set_complex_plane_coordinates(t_fractal *f)
 {
@@ -81,9 +89,9 @@ void julia(t_fractal *f, t_mlx *m, int x, int y, t_complex z)
 	}
 
 	if (is_in_set)
-		mlx_pixel_put(m->mlx, m->win, x, y, 0x00000000);
+		pixel_put(m, x, y, 0x00000000);
 	else
-		mlx_pixel_put(m->mlx, m->win, x, y, 0x00FFFFFF);
+		pixel_put(m, x, y, 0x00FFFFFF);
 }
 
 
@@ -112,9 +120,9 @@ void mandelbrot(t_fractal *f, t_mlx *m, int x, int y, t_complex c)
 	}
 
 	if (is_in_set)
-		mlx_pixel_put(m->mlx, m->win, x, y, 0x00000000);
+		pixel_put(m, x, y, 0x00000000);
 	else
-		mlx_pixel_put(m->mlx, m->win, x, y, 0x00FFFFFF);
+		pixel_put(m, x, y, 0x00FFFFFF);
 }
 
 void draw_fractal(t_mlx *m)
