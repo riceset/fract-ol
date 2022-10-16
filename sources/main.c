@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 07:30:41 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 08:16:48 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,25 +118,17 @@ int julia(t_fractal *f, t_mlx *m, int x, int y, t_complex z)
 {
 	int i;
 	double tmp;
-	bool is_in_set;
-
-	is_in_set = true;
 
 	i = 0;
 	while (i < 100)
 	{
 		if (square(z.re) + square(z.im) > 4.0)
-		{
-			is_in_set = false;
 			break ;
-		}
-
 		tmp = 2 * z.re * z.im + f->k.im;
 		z.re = square(z.re) - square(z.im) + f->k.re;
 		z.im = tmp;
 		i++;
 	}
-
 	return (i);
 }
 
@@ -146,28 +138,19 @@ int mandelbrot(t_fractal *f, t_mlx *m, int x, int y, t_complex c)
 	int i;
 	t_complex z;
 	double tmp;
-	bool is_in_set;
 
 	z.re = 0.0;
 	z.im = 0.0;
-
-	is_in_set = true;
-
 	i = 0;
 	while (i < 100)
 	{
 		if (square(z.re) + square(z.im) > 4.0)
-		{
-			is_in_set = false;
 			break ;
-		}
-
 		tmp = 2 * z.re * z.im + c.im;
 		z.re = square(z.re) - square(z.im) + c.re;
 		z.im = tmp;
 		i++;
 	}
-
 	return (i);
 }
 
@@ -318,9 +301,14 @@ void	set_color(t_mlx *m, int i, int x, int y)
 void draw_fractal(t_mlx *m)
 {
 	t_complex pixel;
-
-	for (double y = 0; y < HEIGHT; y++)
-		for (double x = 0; x < WIDTH; x++)
+	double y;
+	double x;
+	
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
 		{
 			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
 			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
@@ -329,7 +317,10 @@ void draw_fractal(t_mlx *m)
 				set_color(m, mandelbrot(&m->f, m, x, y, pixel), x, y);
 			if (m->f.name == JULIA)
 				set_color(m, julia(&m->f, m, x, y, pixel), x, y);
+			x++;
 		}
+		y++;
+	}
 }
 
 int draw_and_put_image(t_mlx *m)
@@ -343,13 +334,12 @@ int draw_and_put_image(t_mlx *m)
 	return (0);
 }
 
-void close_window(int keycode, t_mlx *m)
+int close_window(int keycode, t_mlx *m)
 {
-	if (keycode == XK_Escape)
-	{
-		mlx_destroy_window(m->mlx, m->win);
-		m->win = NULL;
-	}
+	mlx_destroy_window(m->mlx, m->win);
+	m->win = NULL;
+
+	return (0);
 }
 void zoom_in_on_key(int keycode, t_mlx *m)
 {
@@ -433,7 +423,8 @@ void change_color(int keycode, t_mlx *m)
 
 int handle_keypress(int keycode, t_mlx *m)
 {
-	close_window(keycode, m);
+	if (keycode == XK_Escape)
+		close_window(keycode, m);
 	zoom_on_key(keycode, m);
 	camera_movement(keycode, m);
 	change_color(keycode, m);
@@ -449,15 +440,6 @@ int finalized_with_success(t_mlx *m)
 	free(m->mlx);
 
 	return (SUCCESS);
-}
-
-//後で訊いておく。
-int	exit_hook(t_mlx *m)
-{
-	mlx_destroy_window(m->mlx, m->win);
-	m->win = NULL;
-
-	return (0);
 }
 
 bool check_args(int argc, char **argv)
@@ -482,14 +464,14 @@ bool check_args(int argc, char **argv)
 
 int mouse_hook(int keycode, int x, int y, t_mlx *m)
 {
-	if (keycode == 4)
+	if (keycode == SCROLL_ZOOM_IN)
 	{
 		m->f.min.re += (m->f.max.im - m->f.min.im) * 0.115;
 		m->f.max.re -= (m->f.max.im - m->f.min.im) * 0.115;
 		m->f.min.im += (m->f.max.re - m->f.min.re) * 0.115;
 		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
 	}
-	else if (keycode == 5)
+	else if (keycode == SCROLL_ZOOM_OUT)
 	{
 		m->f.min.re -= (m->f.max.im - m->f.min.im) * 0.115;
 		m->f.max.re += (m->f.max.im - m->f.min.im) * 0.115;
@@ -509,10 +491,7 @@ int main(int argc, char **argv)
 		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
 
 		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
-
-		//後で訊いておく。
-		// mlx_hook(m.win, 17, 0, exit_hook, &m);
-
+		mlx_hook(m.win, DestroyNotify, NoEventMask, close_window, &m);
 		mlx_mouse_hook(m.win, mouse_hook, &m);
 
 		mlx_loop(m.mlx);

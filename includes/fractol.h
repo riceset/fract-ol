@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 05:52:24 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 07:54:58 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 
 # define SUCCESS 0
 # define ERROR 1
+
+#define SCROLL_ZOOM_IN 4
+#define SCROLL_ZOOM_OUT 5
 
 enum e_fractal_name
 {
