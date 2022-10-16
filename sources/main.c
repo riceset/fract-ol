@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 05:06:57 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:16:36 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,30 @@ bool print_error(char *message)
 	return (false);
 }
 
-void set_complex_plane_coordinates(t_fractal *f)
+void set_mandelbrot_coordinates(t_fractal *f)
 {
 	f->min.re = -2.0;
 	f->max.re = +1.0;
-	f->k.re = -0.766667;
-
 	f->min.im = -1.5;
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
+}
+
+void set_julia_coordinates(t_fractal *f)
+{
+	f->min.re = -2.0;
+	f->max.re = +2.0;
+	f->min.im = -2.0;
+	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
+	f->k.re = -0.766667;
 	f->k.im = -0.090000;
+}
+
+void set_complex_plane_coordinates(t_fractal *f)
+{
+	if (f->name == MANDELBROT)
+		set_mandelbrot_coordinates(f);
+	if (f->name == JULIA)
+		set_julia_coordinates(f);
 }
 
 bool init_mlx(t_mlx *m)
@@ -166,7 +181,10 @@ void draw_fractal(t_mlx *m)
 			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
 			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
 
-			mandelbrot(&m->f, m, x, y, pixel);
+			if (m->f.name == MANDELBROT)
+				mandelbrot(&m->f, m, x, y, pixel);
+			if (m->f.name == JULIA)
+				julia(&m->f, m, x, y, pixel);
 		}
 }
 
