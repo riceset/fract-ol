@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 05:16:36 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:23:08 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,9 @@ void draw_fractal(t_mlx *m)
 
 int draw_and_put_image(t_mlx *m)
 {
+	if (!m->win)
+		return (1);
+	mlx_clear_window(m->mlx, m->win);
 	draw_fractal(m);
 	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
 
