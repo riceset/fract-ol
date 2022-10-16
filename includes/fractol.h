@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 04:53:07 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:52:24 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ struct s_mlx
 	int bits_per_pixel;
 	int line_length;
 	int endian;
+	int color;
 	t_fractal f;
 };
 
