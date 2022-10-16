@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 01:36:00 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 01:48:51 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,12 +150,49 @@ int draw_and_put_image(t_mlx *m)
 void close_window(int keycode, t_mlx *m)
 {
 	if (keycode == XK_Escape)
+	{
 		mlx_destroy_window(m->mlx, m->win);
+		m->win = NULL;
+	}
+}
+
+void zoom_in(int keycode, t_mlx *m)
+{
+	if (keycode == XK_z)
+	{
+		m->f.min.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.re -= (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.min.im += (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
+}
+
+void zoom_out(int keycode, t_mlx *m)
+{
+	if (keycode == XK_x)
+	{
+		m->f.min.re -= (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.min.im -= (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
+}
+
+void zoom(int keycode, t_mlx *m)
+{
+	zoom_in(keycode, m);
+	zoom_out(keycode, m);
+}
+
+void camera_movement(int keycode, t_mlx *m)
+{
 }
 
 int handle_keypress(int keycode, t_mlx *m)
 {
 	close_window(keycode, m);
+	zoom(keycode, m);
+	camera_movement(keycode, m);
 
 	return (0);
 }
