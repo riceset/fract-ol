@@ -6,11 +6,58 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 08:16:48 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 08:37:47 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+//TODO: atofのエラー処理
+
+static int	skip_space_sign(char *str, int *is_neg)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || ('\x09' <= str[i] && str[i] <= '\x0D'))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			*is_neg *= -1;
+		i++;
+	}
+	return (i);
+}
+
+double	ft_atof(char *str)
+{
+	int		i;
+	double	nb;
+	int		is_neg;
+	double	div;
+
+	nb = 0;
+	div = 0.1;
+	is_neg = 1;
+	i = skip_space_sign(str, &is_neg);
+	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
+	{
+		nb = (nb * 10.0) + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.')
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		nb = nb + ((str[i] - '0') * div);
+		div *= 0.1;
+		i++;
+	}
+	if (str[i] && !ft_isdigit(str[i]))
+		return (-42);
+	return (nb * is_neg);
+}
 
 void	pixel_put(t_mlx *data, int x, int y, int color)
 {
@@ -34,22 +81,25 @@ void set_mandelbrot_coordinates(t_fractal *f)
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
 }
 
-void set_julia_coordinates(t_fractal *f)
+void set_julia_coordinates(char **argv, t_fractal *f)
 {
 	f->min.re = -2.0;
 	f->max.re = +2.0;
 	f->min.im = -2.0;
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
-	f->k.re = -0.766667;
-	f->k.im = -0.090000;
+
+	f->k.re = ft_atof(argv[2]);
+	f->k.im = ft_atof(argv[3]);
+	// f->k.re = -0.766667;
+	// f->k.im = -0.090000;
 }
 
-void set_complex_plane_coordinates(t_fractal *f)
+void set_complex_plane_coordinates(char **argv, t_fractal *f)
 {
 	if (f->name == MANDELBROT)
 		set_mandelbrot_coordinates(f);
 	if (f->name == JULIA)
-		set_julia_coordinates(f);
+		set_julia_coordinates(argv, f);
 }
 
 bool init_mlx(t_mlx *m)
@@ -101,10 +151,10 @@ void determine_fractal(char *name, t_fractal *f)
 		f->name = JULIA;
 }
 
-bool init_fractal(char *name, t_fractal *f)
+bool init_fractal(char **argv, t_fractal *f)
 {
-	determine_fractal(name, f);
-	set_complex_plane_coordinates(f);
+	determine_fractal(argv[1], f);
+	set_complex_plane_coordinates(argv, f);
 
 	return (true);
 }
@@ -486,7 +536,7 @@ int main(int argc, char **argv)
 {
 	t_mlx m;
 
-	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv[1], &m.f))
+	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv, &m.f))
 	{
 		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
 
