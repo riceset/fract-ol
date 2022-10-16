@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 02:09:05 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 03:15:15 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define FRACTOL_H
 
 # include "../libraries/libft/includes/libft.h"
+# include "../libraries/ft_printf/includes/ft_printf.h"
 # include "../libraries/mlx-linux/mlx.h"
+# include "../libraries/libft/includes/colors.h"
 # include <stdbool.h>
 # include <math.h>
 # include <stdio.h>

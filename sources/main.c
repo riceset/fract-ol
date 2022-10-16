@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 02:43:00 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 03:39:54 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,15 +248,60 @@ int finalized_with_success(t_mlx *m)
 	return (SUCCESS);
 }
 
-int main(void)
+//後で訊いておく。
+int	exit_hook(t_mlx *m)
+{
+	mlx_destroy_window(m->mlx, m->win);
+	m->win = NULL;
+
+	return (0);
+}
+
+bool print_error(char *message)
+{
+	ft_printf(RED "Error" CRESET ": %s\n", message);
+	return (false);
+}
+
+bool check_args(int argc, char **argv)
+{
+	if (argc == 1)
+		return (print_error("Too few arguments."));
+
+	else if (argc > 4)
+		return (print_error("Too many arguments."));
+
+	else if (ft_strcmp(argv[1], "Julia") != 0
+		&& ft_strcmp(argv[1], "julia") != 0
+		&& ft_strcmp(argv[1], "Mandelbrot") != 0
+		&& ft_strcmp(argv[1], "mandelbrot") != 0)
+		return (print_error("Invalid set.\n" GRN "Available sets" CRESET ": [" \
+				YEL "Mandelbrot" CRESET ", " MAG "Julia" CRESET "]"));
+
+	else if ((ft_strcmp(argv[1], "Julia") == 0 || ft_strcmp(argv[1], "julia") == 0)
+		&& (argv[2] == NULL || argv[3] == NULL))
+		return (print_error("Invalid constant (K) value.\n" \
+				GRN "Input for K values" CRESET ": [" YEL "K's REAL PART" \
+				CRESET ", " MAG "K's IMAGINARY PART" CRESET "]"));
+
+	return (true);
+}
+
+int main(int argc, char **argv)
 {
 	t_mlx m;
 
-	if (initialized_mlx(&m) && initialized_fractal(&m.f))
+	if (check_args(argc, argv) && initialized_mlx(&m) && initialized_fractal(&m.f))
 	{
 		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
+
 		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
+
+		//後で訊いておく。
+		mlx_hook(m.win, 17, 0, exit_hook, &m);
+
 		mlx_loop(m.mlx);
+
 		return (finalized_with_success(&m));
 	}
 
