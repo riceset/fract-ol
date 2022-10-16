@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 05:23:08 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 05:31:29 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,7 +314,7 @@ bool check_args(int argc, char **argv)
 	if (argc == 1)
 		return (print_error("Too few arguments."));
 
-	else if (argc > 4)
+	else if (argc > 4 || (is_mandelbrot(argv[1]) && argc > 2))
 		return (print_error("Too many arguments."));
 
 	else if (!(is_mandelbrot(argv[1]) || is_julia(argv[1])))
