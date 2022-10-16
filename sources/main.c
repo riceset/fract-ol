@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 01:09:14 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 01:36:00 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,18 @@ int draw_and_put_image(t_mlx *m)
 	return (0);
 }
 
+void close_window(int keycode, t_mlx *m)
+{
+	if (keycode == XK_Escape)
+		mlx_destroy_window(m->mlx, m->win);
+}
+
+int handle_keypress(int keycode, t_mlx *m)
+{
+	close_window(keycode, m);
+
+	return (0);
+}
 int main(void)
 {
 	t_mlx m;
@@ -154,6 +166,7 @@ int main(void)
 	if (initialized_mlx(&m) && initialized_fractal(&m.f))
 	{
 		mlx_loop_hook(m.mlx, &draw_and_put_image, &m);
+		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
 		mlx_loop(m.mlx);
 		return (0);
 	}

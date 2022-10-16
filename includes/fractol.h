@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 01:06:11 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 01:19:27 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdbool.h>
 # include <math.h>
 # include <stdio.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 # define PI (atan(1) * 4)
 
