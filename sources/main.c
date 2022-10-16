@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 06:29:39 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 07:30:41 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -480,6 +480,26 @@ bool check_args(int argc, char **argv)
 	return (true);
 }
 
+int mouse_hook(int keycode, int x, int y, t_mlx *m)
+{
+	if (keycode == 4)
+	{
+		m->f.min.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.re -= (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.min.im += (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
+	else if (keycode == 5)
+	{
+		m->f.min.re -= (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.min.im -= (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
+
+	return (0);
+}
+
 int main(int argc, char **argv)
 {
 	t_mlx m;
@@ -492,6 +512,8 @@ int main(int argc, char **argv)
 
 		//後で訊いておく。
 		// mlx_hook(m.win, 17, 0, exit_hook, &m);
+
+		mlx_mouse_hook(m.win, mouse_hook, &m);
 
 		mlx_loop(m.mlx);
 
