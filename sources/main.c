@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 01:48:51 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 02:43:00 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void draw_fractal(t_mlx *m)
 			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
 			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
 
-			mandelbrot(&m->f, m, x, y, pixel);
+			julia(&m->f, m, x, y, pixel);
 		}
 }
 
@@ -155,8 +155,7 @@ void close_window(int keycode, t_mlx *m)
 		m->win = NULL;
 	}
 }
-
-void zoom_in(int keycode, t_mlx *m)
+void zoom_in_on_key(int keycode, t_mlx *m)
 {
 	if (keycode == XK_z)
 	{
@@ -167,7 +166,7 @@ void zoom_in(int keycode, t_mlx *m)
 	}
 }
 
-void zoom_out(int keycode, t_mlx *m)
+void zoom_out_on_key(int keycode, t_mlx *m)
 {
 	if (keycode == XK_x)
 	{
@@ -178,35 +177,88 @@ void zoom_out(int keycode, t_mlx *m)
 	}
 }
 
-void zoom(int keycode, t_mlx *m)
+void zoom_on_key(int keycode, t_mlx *m)
 {
-	zoom_in(keycode, m);
-	zoom_out(keycode, m);
+	zoom_in_on_key(keycode, m);
+	zoom_out_on_key(keycode, m);
+}
+
+void camera_up(int keycode, t_mlx *m)
+{
+	if (keycode == XK_Up)
+	{
+		m->f.min.im -= (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im -= (m->f.max.re - m->f.min.re) * 0.115;
+	}
+}
+
+void camera_down(int keycode, t_mlx *m)
+{
+	if (keycode == XK_Down)
+	{
+		m->f.min.im += (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im += (m->f.max.re - m->f.min.re) * 0.115;
+	}
+}
+
+void camera_left(int keycode, t_mlx *m)
+{
+	if (keycode == XK_Left)
+	{
+		m->f.min.re -= (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.re -= (m->f.max.re - m->f.min.re) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
+}
+
+void camera_right(int keycode, t_mlx *m)
+{
+	if (keycode == XK_Right)
+	{
+		m->f.min.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.re += (m->f.max.im - m->f.min.im) * 0.115;
+		m->f.max.im = m->f.min.im + (m->f.max.re - m->f.min.re) * HEIGHT / WIDTH;
+	}
 }
 
 void camera_movement(int keycode, t_mlx *m)
 {
+	camera_up(keycode, m);
+	camera_down(keycode, m);
+	camera_left(keycode, m);
+	camera_right(keycode, m);
 }
 
 int handle_keypress(int keycode, t_mlx *m)
 {
 	close_window(keycode, m);
-	zoom(keycode, m);
+	zoom_on_key(keycode, m);
 	camera_movement(keycode, m);
 
 	return (0);
 }
+
+int finalized_with_success(t_mlx *m)
+{
+	mlx_destroy_image(m->mlx, m->img);
+	mlx_destroy_display(m->mlx);
+	mlx_loop_end(m->mlx);
+	free(m->mlx);
+
+	return (SUCCESS);
+}
+
 int main(void)
 {
 	t_mlx m;
 
 	if (initialized_mlx(&m) && initialized_fractal(&m.f))
 	{
-		mlx_loop_hook(m.mlx, &draw_and_put_image, &m);
+		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
 		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
 		mlx_loop(m.mlx);
-		return (0);
+		return (finalized_with_success(&m));
 	}
 
-	return (1);
+	return (ERROR);
 }

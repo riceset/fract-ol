@@ -6,7 +6,7 @@
 /*   By: mvavasso <mvavasso@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 20:41:59 by mvavasso          #+#    #+#             */
-/*   Updated: 2022/10/16 01:19:27 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 02:09:05 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@
 
 # define PI (atan(1) * 4)
 
-#define WIDTH 900.00
-#define HEIGHT 900.00
+# define WIDTH 900.00
+# define HEIGHT 900.00
+
+# define SUCCESS 0
+# define ERROR 1
 
 struct s_complex
 {
