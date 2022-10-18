@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/16 08:52:27 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/16 11:11:56 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ void	set_julia_coordinates(char **argv, t_fractal *f)
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
 	f->k.re = ft_atof(argv[2]);
 	f->k.im = ft_atof(argv[3]);
-	// f->k.re = -0.766667;
-	// f->k.im = -0.090000;
 }
 
 void	set_complex_plane_coordinates(char **argv, t_fractal *f)
