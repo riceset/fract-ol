@@ -6,13 +6,13 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 05:05:21 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/05/05 09:18:01 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 18:53:29 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putaddress(unsigned long long nbr, char *base)
+int	ft_putaddr(unsigned long long nbr, char *base)
 {
 	unsigned long long	base_digits;
 	int					len;

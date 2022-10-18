@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 08:25:25 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/05/01 07:43:25 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 18:53:16 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ static void	put_fmt(va_list ap, const char *fmt, int *len, char *str)
 	else if (*fmt == 'p')
 	{
 		*len += ft_putstr("0x");
-		*len += ft_putaddress(va_arg(ap, unsigned long long),
-								"0123456789abcdef");
+		*len += ft_putaddr(va_arg(ap, unsigned long long), "0123456789abcdef");
 	}
 	else if (*fmt == 's')
 	{
