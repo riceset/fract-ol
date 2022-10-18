@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_and_put_image.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:37:28 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/10/18 18:24:55 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/10/18 18:35:57 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	main(int argc, char **argv)
+int	draw_and_put_image(t_mlx *m)
 {
-	t_mlx	m;
-
-	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv, &m.f))
-	{
-		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
-		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
-		mlx_hook(m.win, DestroyNotify, NoEventMask, close_window, &m);
-		mlx_mouse_hook(m.win, mouse_hook, &m);
-		mlx_loop(m.mlx);
-		return (finalized_with_success(&m));
-	}
-	return (ERROR);
+	if (!m->win)
+		return (1);
+	mlx_clear_window(m->mlx, m->win);
+	draw_fractal(m);
+	mlx_put_image_to_window(m->mlx, m->win, m->img, 0, 0);
+	return (0);
 }

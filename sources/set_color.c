@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:37:28 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/10/18 18:24:14 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/10/18 18:36:10 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	main(int argc, char **argv)
+void	set_color(t_mlx *m, int i, int x, int y)
 {
-	t_mlx	m;
-
-	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv, &m.f))
-	{
-		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
-		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
-		mlx_hook(m.win, DestroyNotify, NoEventMask, close_window, &m);
-		mlx_mouse_hook(m.win, mouse_hook, &m);
-		mlx_loop(m.mlx);
-		return (finalized_with_success(&m));
-	}
-	return (ERROR);
+	if (m->color % 5 == 0)
+		color_1(m, i, x, y);
+	else if (m->color % 5 == 1)
+		color_2(m, i, x, y);
+	else if (m->color % 5 == 2)
+		color_3(m, i, x, y);
+	else if (m->color % 5 == 3)
+		color_4(m, i, x, y);
+	else if (m->color % 5 == 4)
+		color_5(m, i, x, y);
 }

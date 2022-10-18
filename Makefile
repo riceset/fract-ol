@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/10/16 02:59:31 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/10/18 18:40:54 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,28 @@ LIBS		=	-lft -lftprintf -lmlx -lmlx_Linux -lX11 -lXext -Imlx -lXext
 
 MLX		=	libmlx.a libmlx_Linux.a libftprintf.a
 
-FILES 		=	main.c
+FILES 		=	main.c \
+				atof.c \
+				calculate_fractal.c \
+				camera_movement.c \
+				change_color.c \
+				check_args.c \
+				close_window.c \
+				colors.c \
+				determine_fractal.c \
+				draw_and_put_image.c \
+				draw_fractal.c \
+				finalized_with_success.c \
+				handle_keypress.c \
+				init_fractal.c \
+				init_mlx.c \
+				mouse_hook.c \
+				pixel_put.c \
+				print_error.c \
+				set_color.c \
+				set_complex_plane_coordinates.c \
+				utils.c \
+				zoom_on_key.c
 
 SRCS		=	$(addprefix sources/,$(FILES))
 

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:37:28 by tkomeno          ###   ########.fr       */
+/*   Created: 2022/10/18 18:24:33 by tkomeno           #+#    #+#             */
+/*   Updated: 2022/10/18 18:41:34 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	main(int argc, char **argv)
+void	draw_fractal(t_mlx *m)
 {
-	t_mlx	m;
+	t_complex	pixel;
+	double		y;
+	double		x;
 
-	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv, &m.f))
+	y = 0;
+	while (y < HEIGHT)
 	{
-		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
-		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);
-		mlx_hook(m.win, DestroyNotify, NoEventMask, close_window, &m);
-		mlx_mouse_hook(m.win, mouse_hook, &m);
-		mlx_loop(m.mlx);
-		return (finalized_with_success(&m));
+		x = 0;
+		while (x < WIDTH)
+		{
+			pixel.re = m->f.min.re + x * (m->f.max.re - m->f.min.re) / WIDTH;
+			pixel.im = m->f.min.im + y * (m->f.max.im - m->f.min.im) / HEIGHT;
+			if (m->f.name == MANDELBROT)
+				set_color(m, mandelbrot(m, x, y, pixel), x, y);
+			if (m->f.name == JULIA)
+				set_color(m, julia(m, x, y, pixel), x, y);
+			x++;
+		}
+		y++;
 	}
-	return (ERROR);
 }
