@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:42 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 20:29:37 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 22:03:11 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_julia_coordinates(char **argv, t_fractal *f, bool *is_valid)
 	f->k.im = ft_atof(argv[3], is_valid);
 }
 
-void	set_complex_plane_coordinates(char **argv, t_fractal *f, bool *is_valid)
+void	set_complex_coordinates(char **argv, t_fractal *f, bool *is_valid)
 {
 	if (f->name == MANDELBROT)
 		set_mandelbrot_coordinates(f);

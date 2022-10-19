@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/10/18 18:40:54 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/10/18 22:03:39 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ FILES 		=	main.c \
 				pixel_put.c \
 				print_error.c \
 				set_color.c \
-				set_complex_plane_coordinates.c \
+				set_complex_coordinates.c \
 				utils.c \
 				zoom_on_key.c
 

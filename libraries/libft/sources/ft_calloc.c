@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 18:11:42 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 20:31:15 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 22:01:52 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*b;
-	size_t size_max;
+	size_t	size_max;
 
 	size_max = -1;
 	if (size != 0 && count > size_max / size)
