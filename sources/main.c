@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 00:20:01 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:37:28 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:54:56 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_mlx	m;
 
-	if (check_args(argc, argv) && init_mlx(&m) && init_fractal(argv, &m.f))
+	if (check_args(argc, argv) && init_fractal(argv, &m.f) && init_mlx(&m))
 	{
 		mlx_loop_hook(m.mlx, draw_and_put_image, &m);
 		mlx_hook(m.win, KeyPress, KeyPressMask, handle_keypress, &m);

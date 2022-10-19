@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:12:40 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:34:42 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 21:52:32 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	skip_space_sign(char *str, int *is_neg)
 	return (i);
 }
 
-double	ft_atof(char *str)
+double	ft_atof(char *str, bool *is_valid)
 {
 	int		i;
 	double	nb;
@@ -53,6 +53,6 @@ double	ft_atof(char *str)
 		i++;
 	}
 	if (str[i] && !ft_isdigit(str[i]))
-		return (-42);
+		*is_valid = false;
 	return (nb * is_neg);
 }

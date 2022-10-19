@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 08:50:23 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:31:19 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/18 20:29:17 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ struct						s_mlx
 
 typedef struct s_mlx		t_mlx;
 
-double						ft_atof(char *str);
+double						ft_atof(char *str, bool *is_valid);
 void						pixel_put(t_mlx *data, int x, int y, int color);
 bool						print_error(char *message);
 void						set_mandelbrot_coordinates(t_fractal *f);
-void						set_julia_coordinates(char **argv, t_fractal *f);
+void						set_julia_coordinates(char **argv, t_fractal *f, bool *is_valid);
 void						set_complex_plane_coordinates(char **argv,
-								t_fractal *f);
+								t_fractal *f, bool *is_valid);
 bool						init_mlx(t_mlx *m);
 bool						is_mandelbrot(char *name);
 bool						is_julia(char *name);
