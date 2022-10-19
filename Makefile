@@ -6,7 +6,7 @@
 #    By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 11:44:09 by tkomeno           #+#    #+#              #
-#    Updated: 2022/10/18 22:03:39 by tkomeno          ###   ########.fr        #
+#    Updated: 2022/10/19 16:35:28 by tkomeno          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ MLX_PATH	=	./libraries/mlx-linux
 
 INCLUDES	=	-I includes -I $(LIBFT_PATH)/includes -I $(FT_PRINTF_PATH) -I $(MLX_PATH)
 
-CFLAGS		=	$(INCLUDES)
-# CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
+# CFLAGS		=	$(INCLUDES)
+CFLAGS		=	-Wall -Werror -Wextra $(INCLUDES)
 
 LIBS_PATH	=	-L$(LIBFT_PATH) -L$(MLX_PATH) -L$(FT_PRINTF_PATH)
 
@@ -46,7 +46,7 @@ FILES 		=	main.c \
 				pixel_put.c \
 				print_error.c \
 				set_color.c \
-				set_complex_coordinates.c \
+				set_complex_coord.c \
 				utils.c \
 				zoom_on_key.c
 

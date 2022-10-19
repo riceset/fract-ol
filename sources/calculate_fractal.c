@@ -6,13 +6,13 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:23:12 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:34:50 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:25:16 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	julia(t_mlx *m, int x, int y, t_complex z)
+int	julia(t_mlx *m, t_complex z)
 {
 	int		i;
 	double	tmp;
@@ -30,7 +30,7 @@ int	julia(t_mlx *m, int x, int y, t_complex z)
 	return (i);
 }
 
-int	mandelbrot(t_mlx *m, int x, int y, t_complex c)
+int	mandelbrot(t_complex c)
 {
 	int			i;
 	t_complex	z;

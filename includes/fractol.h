@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 08:50:23 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 22:02:58 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:36:21 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,23 @@ typedef struct s_mlx		t_mlx;
 double						ft_atof(char *str, bool *is_valid);
 void						pixel_put(t_mlx *data, int x, int y, int color);
 bool						print_error(char *message);
-void						set_mandelbrot_coordinates(t_fractal *f);
-void						set_julia_coordinates(char **argv, t_fractal *f, bool *is_valid);
-void						set_complex_coordinates(char **argv, t_fractal *f, bool *is_valid);
+void						set_mandelbrot_coord(t_fractal *f);
+void						set_julia_coord(char **argv, t_fractal *f,
+								bool *is_valid);
+void						set_complex_coord(char **argv, t_fractal *f,
+								bool *is_valid);
 bool						init_mlx(t_mlx *m);
 bool						is_mandelbrot(char *name);
 bool						is_julia(char *name);
 void						determine_fractal(char *name, t_fractal *f);
 bool						init_fractal(char **argv, t_fractal *f);
 double						square(double x);
-int							julia(t_mlx *m, int x, int y, t_complex z);
-int							mandelbrot(t_mlx *m, int x, int y, t_complex c);
+int							julia(t_mlx *m, t_complex z);
+int							mandelbrot(t_complex c);
 void						draw_fractal(t_mlx *m);
 int							draw_and_put_image(t_mlx *m);
-int							close_window(int keycode, t_mlx *m);
+int							close_window_esc(int keycode, t_mlx *m);
+int							close_window_x(t_mlx *m);
 void						zoom_in_on_key(int keycode, t_mlx *m);
 void						zoom_out_on_key(int keycode, t_mlx *m);
 void						zoom_on_key(int keycode, t_mlx *m);
@@ -102,7 +105,7 @@ void						change_color(int keycode, t_mlx *m);
 int							handle_keypress(int keycode, t_mlx *m);
 int							finalized_with_success(t_mlx *m);
 bool						check_args(int argc, char **argv);
-int							mouse_hook(int keycode, int x, int y, t_mlx *m);
+int							mouse_hook(int keycode, t_mlx *m);
 
 void						set_color(t_mlx *m, int i, int x, int y);
 void						color_1(t_mlx *m, int i, int x, int y);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_complex_plane_coordinates.c                    :+:      :+:    :+:   */
+/*   set_complex_coordinates.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:21:42 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 22:03:11 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:35:07 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	set_mandelbrot_coordinates(t_fractal *f)
+void	set_mandelbrot_coord(t_fractal *f)
 {
 	f->min.re = -2.0;
 	f->max.re = +1.0;
@@ -20,7 +20,7 @@ void	set_mandelbrot_coordinates(t_fractal *f)
 	f->max.im = (f->max.re - f->min.re) * HEIGHT / WIDTH + f->min.im;
 }
 
-void	set_julia_coordinates(char **argv, t_fractal *f, bool *is_valid)
+void	set_julia_coord(char **argv, t_fractal *f, bool *is_valid)
 {
 	f->min.re = -2.0;
 	f->max.re = +2.0;
@@ -30,10 +30,10 @@ void	set_julia_coordinates(char **argv, t_fractal *f, bool *is_valid)
 	f->k.im = ft_atof(argv[3], is_valid);
 }
 
-void	set_complex_coordinates(char **argv, t_fractal *f, bool *is_valid)
+void	set_complex_coord(char **argv, t_fractal *f, bool *is_valid)
 {
 	if (f->name == MANDELBROT)
-		set_mandelbrot_coordinates(f);
+		set_mandelbrot_coord(f);
 	if (f->name == JULIA)
-		set_julia_coordinates(argv, f, is_valid);
+		set_julia_coord(argv, f, is_valid);
 }

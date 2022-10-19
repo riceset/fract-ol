@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:26:59 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:36:02 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:23:44 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	handle_keypress(int keycode, t_mlx *m)
 {
 	if (keycode == XK_Escape)
-		close_window(keycode, m);
+		close_window_esc(keycode, m);
 	zoom_on_key(keycode, m);
 	camera_movement(keycode, m);
 	change_color(keycode, m);

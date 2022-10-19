@@ -6,13 +6,13 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:27:56 by tkomeno           #+#    #+#             */
-/*   Updated: 2022/10/18 18:36:07 by tkomeno          ###   ########.fr       */
+/*   Updated: 2022/10/19 16:27:37 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	mouse_hook(int keycode, int x, int y, t_mlx *m)
+int	mouse_hook(int keycode, t_mlx *m)
 {
 	if (keycode == SCROLL_ZOOM_IN)
 	{
