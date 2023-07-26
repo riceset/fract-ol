@@ -10,8 +10,6 @@
 > <i>One of the first graphical projects at 42 school, fract-ol generates beautiful fractals from the complex numbers of an iterative mathematical construct.</i>
 > <i>A fractal is a fragmented geometrical figure that infinitely repeats itself at smaller scales. This project uses the school's graphical library, MiniLibX.</i>
 
-![image](https://github.com/riceset/fract-ol/assets/48802655/eff9b775-4cd5-4a28-ade8-6802709f37f5)
-
 ## Getting started
 First, clone this repository and `cd` into it:
 
@@ -43,6 +41,7 @@ For the Julia fractal set (and only this set), two additional parameters can be 
 ```
 
 ## Mandelbrot set
+![image](https://github.com/riceset/fract-ol/assets/48802655/eff9b775-4cd5-4a28-ade8-6802709f37f5)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/40357532-32c4-4953-a97f-b5814e5b636a)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/509691be-bc0a-43e6-9db7-bd7e731c172f)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/9a7e3464-1cc7-4bfb-82c5-6ec2e6d1cc30)
