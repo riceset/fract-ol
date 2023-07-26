@@ -42,12 +42,9 @@ For the Julia fractal set (and only this set), two additional parameters can be 
 
 ## Mandelbrot set
 ![image](https://github.com/riceset/fract-ol/assets/48802655/eff9b775-4cd5-4a28-ade8-6802709f37f5)
-![image](https://github.com/riceset/fract-ol/assets/48802655/40357532-32c4-4953-a97f-b5814e5b636a)
-![image](https://github.com/riceset/fract-ol/assets/48802655/509691be-bc0a-43e6-9db7-bd7e731c172f)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/9a7e3464-1cc7-4bfb-82c5-6ec2e6d1cc30)
 
 ## Julia set
-![image](https://github.com/riceset/fract-ol/assets/48802655/926e1bfc-83f5-486e-b85f-df4661386ceb)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/5dae7320-ef11-49de-9869-91f9763ee7da)
 ![image](https://github.com/riceset/fract-ol/assets/48802655/86275fc7-04a5-4022-bfbb-6aa732ec0da4)
 
